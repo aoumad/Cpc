@@ -21,18 +21,20 @@ int main(void)
 {
 	ll n, x;
 	cin >> n >> x;
-	vector<ll> coins(n + 1);
+	vector<ll> coins(n+ 1);
 	vector<ll> dp(x + 1, 0);
 	dp[0] = 1;
 	for (ll i = 1; i <= n; i++)
-		cin >> coins[i];
-	for (ll value = 1; value <= x; value++)
 	{
-		 for (ll j = 1; j <= n; j++)
-		 {
-			 if (value >= coins[j])
-				 dp[value] = (dp[value] + dp[value - coins[j]]) % mod;
-		 }
+		cin >> coins[i];
+	}
+	for (ll j = 1; j <= n; j++)
+	{
+		for (ll value = 1; value <= x; value++)
+		{
+			if (value >= coins[j])
+				dp[value] = (dp[value] + dp[value - coins[j]]) % mod;
+		}
 	}
 	cout << dp[x];
 	return (0);
