@@ -34,7 +34,7 @@ Node* removeNthFromEnd(Node* head, int n)
     }
     if (n > len)
     {
-        cout << "something ilogic is happening in the input" << std::endl;
+        cout << "something illogic is happening in the input" << std::endl;
         cout << "the n-th value is bigger than the length of the linked" << std::endl;
         cout << "Thus, we cannot remove any element from the list :(" << std::endl;
         return (head);
