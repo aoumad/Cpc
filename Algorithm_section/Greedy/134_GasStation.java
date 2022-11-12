@@ -1,38 +1,17 @@
-// it doesn't pass all test cases specailly when the first positive results of dp[i] starts from the last gas station
-//needs to be fixed asap
-
-class Solution {
-    public int canCompleteCircuit(int[] gas, int[] cost)
-    {
+public class Solution
+{
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        int sum = 0, minVal = 0, index = 0;
         int n = gas.length;
-        if (n == 0) return 0;
-        int[] dp = new int[n];
-        int index = 0;
-        int sum = 0;
-        boolean found = false;
-        for (int i = 0; i < n; i++)
-        {
-            dp[i] = gas[i] - cost[i];
-            if (found == false && dp[i] >= 0)
-            {
-                found = true;
-                index = i;
-            }
-        }
-        int j = index;
-        if (found == true)
-        {
-            for (int i = 0; i < n; i++, j++)
-            {
-                if (j == n)
-                    j = 0;
-                sum += dp[j];
-            }
-        }
-        if (found == false || sum < 0)
-        {
+        if (gas == null || cost == null || gas.length == 0)
             return (-1);
+        for (int i=0; i<gas.length; ++i) {
+            sum += gas[i]-cost[i];
+            if (sum<minVal) {
+                minVal = sum;
+                index = i+1;
+            }
         }
-        return index;
+        return sum>=0?(index== n?0:index):-1;
     }
 }
