@@ -24,3 +24,24 @@ class Solution {
 
 // my second efficient approach
 
+class Solution {
+    public int findJudge(int n, int[][] trust)
+    {
+        if(n==0)
+            return -1;
+        if(n==1)
+            return n;
+        int[] ai = new int[n + 1];
+        for (int[] it : trust)
+        {
+            ai[it[0]]--;
+            ai[it[1]]++;
+        }
+        for (int i = 0; i <= n; i++)
+        {
+            if (ai[i] == n - 1)
+                return i;
+        }
+        return -1;
+    }
+}
